@@ -1,0 +1,36 @@
+{
+    "items": [
+        {
+            "id": 1,
+            "title": "Project Alpha",
+            "description": "A revolutionary project that changes everything",
+            "status": "In Progress",
+            "priority": "High",
+            "dueDate": "2024-12-31"
+        },
+        {
+            "id": 2,
+            "title": "Project Beta",
+            "description": "An innovative solution for modern problems",
+            "status": "Completed",
+            "priority": "Medium",
+            "dueDate": "2024-11-15"
+        },
+        {
+            "id": 3,
+            "title": "Project Gamma",
+            "description": "Breaking new ground in technology",
+            "status": "Planning",
+            "priority": "Low",
+            "dueDate": "2025-01-30"
+        },
+        {
+            "id": 4,
+            "title": "Project Delta",
+            "description": "A game-changing approach to development",
+            "status": "In Progress",
+            "priority": "High",
+            "dueDate": "2024-12-15"
+        }
+    ]
+}

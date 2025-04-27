@@ -25,7 +25,7 @@ function App() {
   const [viewType, setViewType] = useState('dashboard');
 
   const dataOptions = {
-    correlations: { name: 'קורלציות', data: correlations },
+    // correlations: { name: 'קורלציות', data: correlations },
     complexityOverSeason: { name: 'מורכבות לאורך העונה', data: complexityOverSeason },
     trends: { name: 'מגמות', data: trends },
     busyDays: { name: 'ימים עמוסים', data: busyDays },
@@ -38,7 +38,7 @@ function App() {
     analysisByHours: { name: 'ניתוח לפי שעות', data: analysisByHours },
     analysisByAbnormality: { name: 'ניתוח לפי חריגות', data: analysisByAbnormality },
     analysisByDay: { name: 'ניתוח לפי ימים', data: analysisByDay },
-    urgentSubjects: { name: 'נושאים דחופים', data: urgentSubjects },
+    // urgentSubjects: { name: 'נושאים דחופים', data: urgentSubjects },
     dominantSubjects: { name: 'נושאים דומיננטיים', data: dominantSubjects },
   };
 
@@ -68,9 +68,9 @@ function App() {
             onChange={(e) => setSelectedData(e.target.value)}
             className="px-4 py-2 rounded-lg border border-gray-300 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-right"
           >
-            <option value="correlations">קורלציות</option>
-            <option value="complexityOverSeason">מורכבות לאורך העונה</option>
-            <option value="trends">מגמות</option>
+            {/* <option value="correlations">קורלציות</option> */}
+            <option value="complexityOverSeason">מורכבות פנייה לפי יום</option>
+            <option value="trends">נתונים לפי חודשים</option>
             <option value="busyDays">ימים עמוסים</option>
             <option value="unusualCities">ערים יוצאות דופן</option>
             <option value="easyToHardRelation">יחס קל-קשה</option>
@@ -81,7 +81,7 @@ function App() {
             <option value="analysisByHours">ניתוח לפי שעות</option>
             <option value="analysisByAbnormality">ניתוח לפי חריגות</option>
             <option value="analysisByDay">ניתוח לפי ימים</option>
-            <option value="urgentSubjects">נושאים דחופים</option>
+            {/* <option value="urgentSubjects">נושאים דחופים</option> */}
             <option value="dominantSubjects">נושאים דומיננטיים</option>
           </select>
 
@@ -95,6 +95,12 @@ function App() {
             <option value="card">תצוגת כרטיסים</option>
             <option value="visualization">תצוגת ויזואליזציה</option>
           </select>
+        </div>
+
+        <div className="text-center mb-6">
+          <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 inline-block px-6 py-2 rounded-lg bg-white shadow-sm">
+            {dataOptions[selectedData].name}
+          </h2>
         </div>
 
         <div className="bg-white rounded-xl shadow-lg p-6">

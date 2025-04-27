@@ -66,11 +66,6 @@ const CardView = ({ items }) => {
                                     ) : (
                                         <div className="flex items-center space-x-2">
                                             <span>{item[key]?.toString() || '-'}</span>
-                                            {typeof item[key] === 'number' && (
-                                                <span className={`text-xs ${getValueColor(item[key])}`}>
-                                                    {item[key] > 0 ? '↑' : item[key] < 0 ? '↓' : '−'}
-                                                </span>
-                                            )}
                                         </div>
                                     )}
                                 </div>
@@ -78,12 +73,6 @@ const CardView = ({ items }) => {
                         ))}
                     </div>
                     <div className="px-6 py-4 bg-gray-50 border-t border-gray-100">
-                        <div className="flex items-center justify-between">
-                            <span className="text-sm text-gray-500">Item {index + 1}</span>
-                            <button className="text-sm text-indigo-600 hover:text-indigo-800 font-medium">
-                                View Details
-                            </button>
-                        </div>
                     </div>
                 </div>
             ))}

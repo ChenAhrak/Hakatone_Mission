@@ -126,11 +126,6 @@ const TableView = ({ items }) => {
                                             ) : (
                                                 <div className="flex items-center justify-end space-x-2">
                                                     <span>{item[key]?.toString() || '-'}</span>
-                                                    {typeof item[key] === 'number' && (
-                                                        <span className={`text-xs ${getValueColor(item[key])}`}>
-                                                            {item[key] > 0 ? '↑' : item[key] < 0 ? '↓' : '−'}
-                                                        </span>
-                                                    )}
                                                 </div>
                                             )}
                                         </div>

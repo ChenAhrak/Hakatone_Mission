@@ -1,5 +1,14 @@
 import React from 'react';
 
+const COLORS = {
+    primary: '#6366F1',
+    secondary: '#EC4899',
+    success: '#10B981',
+    warning: '#F59E0B',
+    info: '#3B82F6',
+    error: '#EF4444',
+};
+
 const CardView = ({ items }) => {
     if (!items || items.length === 0) {
         return (
@@ -27,30 +36,54 @@ const CardView = ({ items }) => {
         new Set(items.flatMap(item => Object.keys(item)))
     ).filter(key => key !== 'id');
 
+    const getValueColor = (value) => {
+        if (typeof value === 'number') {
+            if (value > 0) return 'text-emerald-600';
+            if (value < 0) return 'text-red-600';
+            return 'text-gray-600';
+        }
+        return 'text-gray-700';
+    };
+
     return (
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {items.map((item, index) => (
                 <div
                     key={item.id || index}
-                    className="group bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-200 overflow-hidden"
+                    className="group bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200 overflow-hidden hover:border-indigo-200"
                 >
                     <div className="p-6 space-y-5">
-                        {keys.map(key => (
+                        {keys.map((key, keyIndex) => (
                             <div key={key} className="flex flex-col">
-                                <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wide">
+                                <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">
                                     {key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
                                 </h4>
-                                <div className="text-base text-gray-700 group-hover:text-indigo-600 transition-colors duration-200">
+                                <div className={`text-base ${getValueColor(item[key])} group-hover:text-indigo-600 transition-colors duration-200`}>
                                     {typeof item[key] === 'object' ? (
-                                        <pre className="bg-gray-50 text-sm rounded-lg p-3 overflow-x-auto whitespace-pre-wrap">
+                                        <pre className="bg-gray-50 text-sm rounded-lg p-3 overflow-x-auto whitespace-pre-wrap border border-gray-100">
                                             {JSON.stringify(item[key], null, 2)}
                                         </pre>
                                     ) : (
-                                        item[key]?.toString() || '-'
+                                        <div className="flex items-center space-x-2">
+                                            <span>{item[key]?.toString() || '-'}</span>
+                                            {typeof item[key] === 'number' && (
+                                                <span className={`text-xs ${getValueColor(item[key])}`}>
+                                                    {item[key] > 0 ? '↑' : item[key] < 0 ? '↓' : '−'}
+                                                </span>
+                                            )}
+                                        </div>
                                     )}
                                 </div>
                             </div>
                         ))}
+                    </div>
+                    <div className="px-6 py-4 bg-gray-50 border-t border-gray-100">
+                        <div className="flex items-center justify-between">
+                            <span className="text-sm text-gray-500">Item {index + 1}</span>
+                            <button className="text-sm text-indigo-600 hover:text-indigo-800 font-medium">
+                                View Details
+                            </button>
+                        </div>
                     </div>
                 </div>
             ))}
